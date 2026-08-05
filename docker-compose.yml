@@ -1,6 +1,6 @@
 services:
   api:
-    build: ./api
+    image: ghcr.io/0c2pus/url-shortener-api:latest
     ports:
       - "3000:3000"
     environment:
