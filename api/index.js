@@ -56,4 +56,4 @@ app.get('/:shortCode', async (req, res) => {
   res.redirect(originalUrl);
 });
 
-app.listen(3000, () => console.log('API running on port 3000'));
+app.listen(3000, () => console.log('deployed via CI/CD'));
