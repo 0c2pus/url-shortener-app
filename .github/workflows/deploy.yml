@@ -28,22 +28,23 @@ jobs:
           context: ./api
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/url-shortener-api:latest
+          
+  # TODO: rewrite deploy-job with Kubernetes (kubectl apply / GitOps from ArgoCD)
+  # deploy:
+  #   needs: build-and-push
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-  deploy:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd url-shortener-app
-            git pull
-            docker compose pull
-            docker compose up -d
+  #     - name: Deploy to server
+  #       uses: appleboy/ssh-action@v1.0.3
+  #       with:
+  #         host: ${{ secrets.SERVER_IP }}
+  #         username: ${{ secrets.SERVER_USER }}
+  #         key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #         script: |
+  #           cd url-shortener-app
+  #           git pull
+  #           docker compose pull
+  #           docker compose up -d
