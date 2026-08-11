@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: ghcr.io/0c2pus/url-shortener-api:241d3688a81e456ed7fdaf8ebf2863fca2cbaeef
+          image: ghcr.io/0c2pus/url-shortener-api:56c2aceca812af2c643173a108bdf77c09393785
           ports:
             - containerPort: 3000
           env:
