@@ -25,11 +25,12 @@ spec:
       storage: 1Gi
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: postgres
   namespace: url-shortener
 spec:
+  serviceName: postgres
   replicas: 1
   selector:
     matchLabels:
@@ -60,12 +61,17 @@ spec:
               cpu: 300m
               memory: 256Mi
       volumes:
-        - name: postgres-storage
-          persistentVolumeClaim:
-            claimName: postgres-pvc
         - name: postgres-init
           configMap:
             name: postgres-init
+volumeClaimTemplates:
+    - metadata:
+        name: postgres-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
