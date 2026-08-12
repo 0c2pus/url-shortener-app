@@ -46,7 +46,7 @@ Push to `main` → GitHub Actions builds a Docker image, tags it with the commit
 ![argocd](docs/screenshots/argocd-synced.png)
 
 **Live Telegram alert**
-![telegram](docs/screenshots/telegram-alert.png)
+![telegram](docs/screenshots/telegram-alert.jpg)
 
 **All pods running**
 ![pods](docs/screenshots/kubectl-pods-running.png)
